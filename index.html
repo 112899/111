@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>慕瑶智力测验</title>
+  <style>
+    body {
+      font-family: '微软雅黑', sans-serif;
+      background-color: #fff3e0;
+      text-align: center;
+      padding: 80px 20px;
+      color: #e65100;
+      overflow: hidden;
+    }
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 50px;
+    }
+
+    .option-btn {
+      padding: 15px 30px;
+      font-size: 20px;
+      margin: 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .yes {
+      background-color: #ff7043;
+      color: white;
+    }
+
+    .yes:hover {
+      background-color: #f4511e;
+      transform: scale(1.1);
+    }
+
+    .no {
+      background-color: #cfd8dc;
+      color: #607d8b;
+      position: absolute;
+      transition: top 0.3s, left 0.3s;
+    }
+
+    #result {
+      margin-top: 50px;
+      font-size: 30px;
+      font-weight: bold;
+      color: #d84315;
+      animation: pop 0.5s ease;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    #sticker {
+      margin-top: 20px;
+      width: 150px;
+      display: none;
+      animation: bounce 0.8s infinite alternate;
+    }
+
+    @keyframes bounce {
+      0% { transform: translateX(-10px); }
+      100% { transform: translateX(10px); }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>慕瑶你是不是傻子？</h2>
+
+  <button class="option-btn yes" onclick="showAnswer()">是的</button>
+  <button class="option-btn no" id="noBtn">不是</button>
+
+  <div id="result">哇 你真是个傻子哈 🤭</div>
+  <img id="sticker" src="https://emoji.slack-edge.com/T0MJ2JZJ7/baka/dfdb703d44fa34f2.gif" alt="傻子贴纸">
+
+  <audio id="laughSound">
+    <source src="https://www.fesliyanstudios.com/play-mp3/4387" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const result = document.getElementById("result");
+    const noBtn = document.getElementById("noBtn");
+    const sticker = document.getElementById("sticker");
+    const laughSound = document.getElementById("laughSound");
+
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - 120);
+      const y = Math.random() * (window.innerHeight - 120);
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    });
+
+    function showAnswer() {
+      result.style.display = "block";
+      sticker.style.display = "inline-block";
+      laughSound.play();
+    }
+  </script>
+
+</body>
+</html>
